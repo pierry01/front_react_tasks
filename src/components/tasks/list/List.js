@@ -13,47 +13,47 @@ const List = (props) => {
     );
   };
 
+  const deleteTask = (task) => {
+    if (window.confirm(`Are you sure you want to delete: "${task.title}"`)) {
+      Axios.delete(`http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`);
+    }
+  };
+
   return (
-    <div>
-      <Card>
-        <Card.Body>
-          <Table responsive>
-            <tbody>
-              {props.tasks.map((task) => {
-                return (
-                  <tr key={task.id}>
-                    <td className="col-md-10">{task.title}</td>
-                    <td>
-                      {task.done === false ? (
-                        <a className="check" href="/">
-                          <FontAwesomeIcon
-                            icon="check-circle"
-                            onClick={() => checkTask(task)}
-                          />
-                        </a>
-                      ) : null}
-                    </td>
-                    <td>
-                      <a
-                        className="delete"
-                        href="/"
-                        onClick={() => {
-                          Axios.delete(
-                            `http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`
-                          );
-                        }}
-                      >
-                        <FontAwesomeIcon icon="trash-alt" />
+    <Card>
+      <Card.Body>
+        <Table responsive>
+          <tbody>
+            {props.tasks.map((task) => {
+              return (
+                <tr key={task.id}>
+                  <td className="col-md-10">{task.title}</td>
+                  <td>
+                    {task.done === false ? (
+                      <a className="check" href="/">
+                        <FontAwesomeIcon
+                          icon="check-circle"
+                          onClick={() => checkTask(task)}
+                        />
                       </a>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
-    </div>
+                    ) : null}
+                  </td>
+                  <td>
+                    <a
+                      className="delete"
+                      href="/"
+                      onClick={() => deleteTask(task)}
+                    >
+                      <FontAwesomeIcon icon="trash-alt" />
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </Card.Body>
+    </Card>
   );
 };
 

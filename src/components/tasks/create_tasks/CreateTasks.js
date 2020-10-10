@@ -17,7 +17,7 @@ const CreateTask = (props) => {
   };
 
   return (
-    <div>
+    <>
       <Button
         onClick={(e) => setShow(true)}
         variant="dark"
@@ -49,7 +49,7 @@ const CreateTask = (props) => {
           </form>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -4,13 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
   return (
-    <div>
-      <Navbar>
-        <Navbar.Brand>
-          <FontAwesomeIcon icon="check-circle" size="lg" /> Task Finisher
-        </Navbar.Brand>
-      </Navbar>
-    </div>
+    <Navbar>
+      <Navbar.Brand>
+        <FontAwesomeIcon icon="check-circle" size="lg" /> Task Finisher
+      </Navbar.Brand>
+    </Navbar>
   );
 };
 

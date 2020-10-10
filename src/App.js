@@ -10,13 +10,13 @@ library.add(faCheckCircle, faTrashAlt);
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
 
       <Container>
         <Tasks />
       </Container>
-    </div>
+    </>
   );
 };
 
