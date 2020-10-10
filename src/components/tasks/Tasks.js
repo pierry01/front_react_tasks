@@ -26,12 +26,12 @@ const Tasks = () => {
     <Row>
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
         <p className="title">To-do</p>
-        <List tasks={tasks.filter((task) => task.done === true)} />
+        <List tasks={tasks.filter((task) => task.done === false)} />
       </Col>
 
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
         <p className="title">Done</p>
-        <List tasks={tasks.filter((task) => task.done === false)} />
+        <List tasks={tasks.filter((task) => task.done === true)} />
       </Col>
     </Row>
   );

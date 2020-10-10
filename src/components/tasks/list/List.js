@@ -5,6 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 const List = (props) => {
+  const checkTask = (task) => {
+    let params = { task: { done: "true" } };
+    axios
+      .put(`http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`, params)
+      .then((res) => {})
+      .catch();
+  };
+
   return (
     <div>
       <Card>
@@ -18,7 +26,10 @@ const List = (props) => {
                     <td>
                       {task.done === false ? (
                         <a className="check" href="/">
-                          <FontAwesomeIcon icon="check-circle" />
+                          <FontAwesomeIcon
+                            icon="check-circle"
+                            onClick={() => checkTask(task)}
+                          />
                         </a>
                       ) : null}
                     </td>
