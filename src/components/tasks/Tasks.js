@@ -4,42 +4,34 @@ import Col from "react-bootstrap/Col";
 import List from "./list/List";
 import axios from "axios";
 
-const Tasks = (props) => {
+const Tasks = () => {
   useEffect(() => {
     getTasks();
   }, []);
 
-  let tasksData = [];
-  const [tasks, setTasks] = useState(tasksData);
-
   const getTasks = () => {
     axios
-      .get("https://jpierry-api-tasks.herokuapp.com/tasks")
+      .get("http://jpierry-api-tasks.herokuapp.com/tasks")
       .then((res) => {
-        if (res.data != null) {
-          tasksData = res.data;
-        }
-        setTasks(tasksData);
+        setTasks(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const [tasks, setTasks] = useState([]);
+
   return (
     <Row>
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
         <p className="title">To-do</p>
-        <List
-          tasks={tasks.filter(task => task.done === false)}
-        />
+        <List tasks={tasks.filter((task) => task.done === true)} />
       </Col>
 
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
         <p className="title">Done</p>
-        <List
-          tasks={tasks.filter(task => task.done === true)}
-        />
+        <List tasks={tasks.filter((task) => task.done === false)} />
       </Col>
     </Row>
   );

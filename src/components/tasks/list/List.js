@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 
 const List = (props) => {
   return (
@@ -22,7 +23,15 @@ const List = (props) => {
                       ) : null}
                     </td>
                     <td>
-                      <a className="delete" href="/">
+                      <a
+                        className="delete"
+                        href="/"
+                        onClick={() => {
+                          axios.delete(
+                            `http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`
+                          );
+                        }}
+                      >
                         <FontAwesomeIcon icon="trash-alt" />
                       </a>
                     </td>
