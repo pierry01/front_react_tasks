@@ -2,15 +2,15 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+import Axios from "axios";
 
 const List = (props) => {
   const checkTask = (task) => {
     let params = { task: { done: "true" } };
-    axios
-      .put(`http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`, params)
-      .then((res) => {})
-      .catch();
+    Axios.put(
+      `http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`,
+      params
+    );
   };
 
   return (
@@ -38,7 +38,7 @@ const List = (props) => {
                         className="delete"
                         href="/"
                         onClick={() => {
-                          axios.delete(
+                          Axios.delete(
                             `http://jpierry-api-tasks.herokuapp.com/tasks/${task.id}`
                           );
                         }}

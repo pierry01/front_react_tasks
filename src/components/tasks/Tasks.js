@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import List from "./list/List";
-import axios from "axios";
+import CreateTask from "./create_tasks/CreateTasks";
+import Axios from "axios";
 
 const Tasks = () => {
   useEffect(() => {
@@ -10,14 +11,9 @@ const Tasks = () => {
   }, []);
 
   const getTasks = () => {
-    axios
-      .get("http://jpierry-api-tasks.herokuapp.com/tasks")
-      .then((res) => {
-        setTasks(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Axios.get("http://jpierry-api-tasks.herokuapp.com/tasks").then((res) => {
+      setTasks(res.data);
+    });
   };
 
   const [tasks, setTasks] = useState([]);
@@ -27,6 +23,7 @@ const Tasks = () => {
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
         <p className="title">To-do</p>
         <List tasks={tasks.filter((task) => task.done === false)} />
+        <CreateTask getTasks={getTasks} />
       </Col>
 
       <Col xs={{ span: 8, offset: 2 }} className="tasks_list">
