@@ -13,7 +13,7 @@ http://front_react_tasks.surge.sh
 
 # Endpoints
 
-**Users:**
+**Tasks:**
 * GET /tasks             ----> Retorna a lista de tarefas cadastradas
 * GET /tasks/:id         ----> Retorna uma tarefa, com base no parâmetro :id (**função não implementada no front-end**)
 * POST /tasks            ----> Cria tarefas com base em dois parâmetros: {"title": "...", "done": boolean} que devem ser enviados no body da requisição.
