@@ -1,4 +1,4 @@
-# BLOX - API Ruby on Rails + ReactJS
+# API Ruby on Rails + ReactJS
 
 **Para esta versão, foi usado o princípio de MVP. Existem melhorias que podem ser discutidas e implementadas**
 
